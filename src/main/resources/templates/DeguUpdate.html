@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8"></meta>
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1./jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstarp/3.37-1/js/bootstrap.min.js}"></script>
+<link href="../degusuper.css" rel="stylesheet">
+<title>バニちゃん記録</title>
+</head>
+
+<body>
+	<div class="col-sm-5">
+		<div class="page-header">
+			<h1>編集画面</h1>
+		</div>
+
+		<form method="post" th:action="@{/DeguUpdate}"
+			th:object="${deguForm}">
+			<input type="hidden"th:field="*{Id}">
+
+			<table class="table table-borderd table-hover">
+
+				<tr>
+					<th class="active">コメント</th>
+					<td>
+						<div class="form-group">
+							<textarea class="form-control" th:field="*{comment}"th:text="*{comment}"></textarea>
+                    
+
+
+						</div>
+					</td>
+				</tr>
+
+
+			</table>
+			
+			<img class="image3" th:src="'/Degu1/'+ *{photo}">
+		<input type="file" name="photo" th:field="*{photo}" />
+		
+
+			<button class="btn btn-primary" type="submit">更新する</button>
+		</form>
+	</div>
+</body>
+</html>

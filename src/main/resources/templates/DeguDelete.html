@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8"></meta>
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1./jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstarp/3.37-1/js/bootstrap.min.js}"></script>
+<title>バニちゃん記録</title>
+</head>
+
+<body>
+	<div class="col-sm-5">
+		<div class="page-header">
+			<h1>記事削除</h1>
+		</div>
+
+		<form method="post" th:action="@{/deguDetail}" th:object="${deguForm}">
+			<textarea class="form-control" th:field="*{comment}"
+				th:text="*{comment}" readonly></textarea>
+	<input type="hidden"th:field="*{Id}"/>
+
+
+
+
+	<img th:src="'/Degu1/'+ *{photo}">
+
+
+
+		
+			
+			<button class="btn btn-primary" type="submit">削除する</button>
+			</form>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8"></meta>
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1./jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstarp/3.37-1/js/bootstrap.min.js}"></script>
+<title>バニちゃん記録</title>
+</head>
+
+<body>
+	<div class="col-sm-5">
+		<div class="page-header">
+			<h1>バニちゃんの成長日記</h1>
+		</div>
+
+		<form method="get" th:action="@{/DeguConfirm}"
+			th:object="${deguForm}">
+
+			<table class="table table-borderd table-hover">
+<tr>
+					
+
+				<tr>
+					
+					<th class="active">コメント</th>
+					<td>
+						<div class="form-group">
+							<textarea class="form-control" th:field="*{comment}"></textarea>
+						
+							
+						</div>
+					</td>
+				</tr>
+			</table>
+			<input type="file" name="photo" th:field="*{photo}" />
+			
+			<ul>
+				<li th:each="error:${#fields.detailedErrors()}"><span
+					th:text="${error.message}">Error message</span></li>
+			</ul>
+			<button class="btn btn-primary" type="submit">登録</button>
+		</form>
+	</div>
+</body>
+</html>

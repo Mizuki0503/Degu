@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8"></meta>
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1./jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstarp/3.37-1/js/bootstrap.min.js}"></script>
+<title>バニちゃん記録</title>
+<meta name="description" content="バニちゃんの１日の成長記録">
+<!--CSS-->
+<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+<link href="https://fonts.googleapis.com/css?family=Philosopher"
+	rel="stylesheet">
+<link href="/degusuper.css" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
+
+</head>
+<body>
+
+	<div id="news" class="big-bg">
+		<header class="wrapper">
+
+			<img src="/Degu1/harinezumi2.jpg">
+			<p>Bani's Diary</p>
+		</header>
+	</div>
+	<div class="main">
+		<div class="news-contents">
+			<div class="left">
+				<div class="article" th:each="degu: ${deguList}">
+					<div class="image">
+						<img th:src="'/Degu1/'+${degu.photo}">
+					</div>
+					<div class="botan">
+						<div id="clock">
+							<i class="far fa-clock fa-2x"></i>
+						</div>
+						<p class="day"
+							th:text="${ #dates.format(degu.updated_at,'yyyy-MM-dd')}"></p>
+						<div class="comment">
+							<p class="comment1" th:text=" ${degu.comment}"></p>
+						</div>
+						<a th:href="@{'/DeguDelete/' +${degu.Id}}"><i
+							class="fas fa-trash-alt fa-2x" id="delete"></i></a> <a
+							th:href="@{'/DeguUpdate/' +${degu.Id}}"><i
+							class="fas fa-pencil-alt fa-2x" id="edit"></i></a>
+					</div>
+				</div>
+
+				<form method="post" th:action="@{/DeguForm}" th:object="${deguForm}">
+					<button type="submit">
+ 　　　　　　　　　　　　　　<i class="fas fa-plus　fa-2x"></i> </button>
+				</form>
+			</div>
+		</div>
+		<aside>
+		      <div class="image1">
+             <h3 class="sub-title">私の紹介</h3>
+             <img src="/Degu1/mizuki.png">
+             </div>
+			<h3 class="sub-title">バニちゃんの紹介</h3>
+			<p>大阪府吹田市にあるぺットショップp＆LUXEで、生後2ヶ月のバニちゃんを見つける。
+				１番人懐っこく動き回ってたデグーである。食べることが大好きで常に お菓子を食べている。メス♀</p>
+			<!--archeve-->
+			<h3 class="sub-title">ARCHIVE</h3>
+			<ul class="sub-menu">
+				<li th:each="ym: ${yearmonth}">
+					<a th:href="@{'/DeguArchive/'+${ym}}"th:text=" ${ym}"></a>
+				</li>
+				
+			</ul>
+		</aside>
+	</div>
+</body>
+
+
+</html>
